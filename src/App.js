@@ -1,5 +1,6 @@
 import Todo from "./components/Todo";
-
+import Form from "./components/Form";
+import FilterButton from "./components/FilterButton";
 
 function App(props) {
 
@@ -18,19 +19,11 @@ function App(props) {
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
-      
+      <Form />
       <div className="filters btn-group stack-exception">
-        
-        <button type="button" className="btn toggle-btn" aria-pressed="false">
-          <span className="visually-hidden">Show </span>
-          <span>Active</span>
-          <span className="visually-hidden"> tasks</span>
-        </button>
-        <button type="button" className="btn toggle-btn" aria-pressed="false">
-          <span className="visually-hidden">Show </span>
-          <span>Completed</span>
-          <span className="visually-hidden"> tasks</span>
-        </button>
+        <FilterButton />
+        <FilterButton />
+        <FilterButton />
       </div>
       <h2 id="list-heading">
         3 tasks remaining
