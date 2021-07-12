@@ -2,7 +2,9 @@ import Todo from "./components/Todo";
 
 
 function App(props) {
-  const taskList = props.tasks.map(task => task.name);
+
+  const taskList = props.tasks.map(task => <Todo />);
+   
   console.log(props);
   const subject = props.subject;
   return (
