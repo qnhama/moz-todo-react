@@ -12,7 +12,21 @@ function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
 
   function toggleTaskCompleted(id) {
-    console.log(tasks[0])
+    const updatedTasks = tasks.map(task => {
+      // if this task has the same ID as the edited task
+      if (id === task.id) {
+        // use object spread to make a new object
+        // whose `completed` prop has been inverted
+        return {...task, completed: !task.completed}
+      }
+      return task;
+    });
+    setTasks(updatedTasks);  
+  }
+
+  function deleteTask(id) {
+    const remainingTasks = tasks.filter(task => id !== task.id);
+    setTasks(remainingTasks);
   }
 
   const taskList = tasks.map(task => (
@@ -22,6 +36,7 @@ function App(props) {
         completed={task.completed}
         key={task.id}  //key is a special prop that's managed by React – you cannot use the word key for any other purpose. Because keys should be unique, we're going to re-use the id of each task object as its key. Update your taskList constant like so:
         toggleTaskCompleted={toggleTaskCompleted}
+        deleteTask={deleteTask}
 
       />
     )
