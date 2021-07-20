@@ -37,18 +37,21 @@ function App(props) {
     setTasks(remainingTasks);
   }
 
-  const taskList = tasks.map(task => (
-      <Todo
-        id={task.id}
-        name={task.name}
-        completed={task.completed}
-        key={task.id}  //key is a special prop that's managed by React – you cannot use the word key for any other purpose. Because keys should be unique, we're going to re-use the id of each task object as its key. Update your taskList constant like so:
-        toggleTaskCompleted={toggleTaskCompleted}
-        deleteTask={deleteTask}
-        editTask={editTask}
-      />
-    )
-  ); //Rendering with iteration
+const taskList = tasks
+.filter(FILTER_MAP[filter])
+.map(task => (
+  <Todo
+    id={task.id}
+    name={task.name}
+    completed={task.completed}
+    key={task.id} //key is a special prop that's managed by React – you cannot use the word key for any other purpose. Because keys should be unique, we're going to re-use the id of each task object as its key. Update your taskList constant like so:
+    toggleTaskCompleted={toggleTaskCompleted}
+    deleteTask={deleteTask}
+    editTask={editTask}
+  />
+));//Rendering with iteration
+
+ 
 
   const filterList = FILTER_NAMES.map(name => (
     <FilterButton
