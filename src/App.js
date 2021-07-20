@@ -50,6 +50,9 @@ function App(props) {
     )
   ); //Rendering with iteration
 
+  const filterList = FILTER_NAMES.map(name => (
+    <FilterButton key={name} name={name}/>
+  ));
 
   function addTask(name) {
     const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
@@ -75,9 +78,7 @@ function App(props) {
       <h1>TodoMatic</h1>
       <Form addTask={addTask} />
       <div className="filters btn-group stack-exception">
-        <FilterButton />
-        <FilterButton />
-        <FilterButton />
+        {filterList}
       </div>
       <h2 id="list-heading">{headingText}</h2>
       <ul
