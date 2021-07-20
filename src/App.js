@@ -51,7 +51,12 @@ function App(props) {
   ); //Rendering with iteration
 
   const filterList = FILTER_NAMES.map(name => (
-    <FilterButton key={name} name={name}/>
+    <FilterButton
+      key={name}
+      name={name}
+      isPressed={name === filter}
+      setFilter={setFilter}
+    />
   ));
 
   function addTask(name) {
