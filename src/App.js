@@ -37,7 +37,7 @@ function App(props) {
         key={task.id}  //key is a special prop that's managed by React – you cannot use the word key for any other purpose. Because keys should be unique, we're going to re-use the id of each task object as its key. Update your taskList constant like so:
         toggleTaskCompleted={toggleTaskCompleted}
         deleteTask={deleteTask}
-
+        editTask={editTask}
       />
     )
   ); //Rendering with iteration
@@ -51,7 +51,17 @@ function App(props) {
   const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
   const headingText = `${taskList.length} ${tasksNoun} remaining`;
 
-  
+  function editTask(id, newName) {
+    const editedTaskList = tasks.map(task => {
+    // if this task has the same ID as the edited task
+      if (id === task.id) {
+        //
+        return {...task, name: newName}
+      }
+      return task;
+    });
+    setTasks(editedTaskList);
+  }
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
