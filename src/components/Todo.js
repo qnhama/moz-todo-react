@@ -84,9 +84,10 @@ export default function Todo(props) {
   );
 
   useEffect(() => {
-    console.log("side effect");
-  });
-  console.log("main render");
+    if (isEditing) {
+      editFieldRef.current.focus();
+    }
+  }, [isEditing]);
 
   return (
       
