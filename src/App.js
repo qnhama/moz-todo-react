@@ -1,8 +1,9 @@
 import Todo from "./components/Todo";
 import Form from "./components/Form";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import FilterButton from "./components/FilterButton";
 import { nanoid } from "nanoid";
+
 
 
 const FILTER_MAP = {
@@ -81,6 +82,9 @@ const taskList = tasks
     });
     setTasks(editedTaskList);
   }
+
+  const listHeadingRef = useRef(null);
+
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
