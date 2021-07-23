@@ -84,10 +84,12 @@ export default function Todo(props) {
   );
 
   useEffect(() => {
-    if (isEditing) {
-      editFieldRef.current.focus();
-    }
-  }, [isEditing]);
+  if (isEditing) {
+    editFieldRef.current.focus();
+  } else {
+    editButtonRef.current.focus();
+  }
+}, [isEditing]);
 
   return (
       
