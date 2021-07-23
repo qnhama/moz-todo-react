@@ -4,7 +4,13 @@ import React, { useState, useRef, useEffect } from "react";
 import FilterButton from "./components/FilterButton";
 import { nanoid } from "nanoid";
 
-
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
 
 const FILTER_MAP = {
   All: () => true,
@@ -84,6 +90,8 @@ const taskList = tasks
   }
 
   const listHeadingRef = useRef(null);
+
+  const prevTaskLength = usePrevious(tasks.length);
 
   return (
     <div className="todoapp stack-large">
